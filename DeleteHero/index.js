@@ -1,17 +1,26 @@
-module.exports = function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    if (req.query.name || (req.body && req.body.name)) {
+var MongoClient = require('mongodb').MongoClient;
+const url = 'your-connectio-string';
+module.exports = function(context, req) {
+  context.log('JavaScript HTTP trigger function processed a request.');
+  if (req.query) {
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      let heroId = parseInt(req.params.id);
+      db.collection('Heroes').remove({ id: heroId }, function(err, result) {
+        if (err) throw err;
+        context.log(result);
         context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
+          status: 200,
+          body: 'Hero deleted successfully!'
         };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done();
+        db.close();
+        context.done();
+      });
+    });
+  } else {
+    context.res = {
+      status: 400,
+      body: 'Please pass a todo in the request body'
+    };
+  }
 };

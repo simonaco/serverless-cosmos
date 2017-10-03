@@ -1,8 +1,7 @@
 {
-  "disabled": false,
   "bindings": [
     {
-      "authLevel": "function",
+      "authLevel": "anonymous",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req"
@@ -11,6 +10,16 @@
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "type": "documentDB",
+      "name": "hero",
+      "databaseName": "admin",
+      "collectionName": "Heroes",
+      "createIfNotExists": true,
+      "connection": "serverless-simonaco_DOCUMENTDB",
+      "direction": "out"
     }
-  ]
+  ],
+  "disabled": false
 }
