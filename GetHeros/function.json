@@ -18,7 +18,7 @@
       "name": "heroes",
       "databaseName": "admin",
       "collectionName": "Heroes",
-      "connection": "porto-demo_DOCUMENTDB",
+      "connection": "serverless-simonaco_DOCUMENTDB",
       "direction": "in"
     }
   ]

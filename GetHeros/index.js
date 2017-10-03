@@ -3,7 +3,7 @@ module.exports = function(context, req) {
 
   context.res = {
     // status: 200, /* Defaults to 200 */
-    body: context.bingings.heroes
+    body: context.bindings.heroes
   };
 
   context.done();
