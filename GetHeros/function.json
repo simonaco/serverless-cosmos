@@ -1,0 +1,25 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "heroes/"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "documentDB",
+      "name": "heroes",
+      "databaseName": "admin",
+      "collectionName": "Heroes",
+      "connection": "porto-demo_DOCUMENTDB",
+      "direction": "in"
+    }
+  ]
+}
